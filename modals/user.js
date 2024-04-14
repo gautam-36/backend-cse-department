@@ -12,9 +12,9 @@ const userSchema=new mongoose.Schema({
          type:String,
          required:[true,"please enter the password"]
     },
-    isAdmin  :{
-       type:Boolean,
-       default:false
+    userType  :{
+        type:String,
+        required: [true, "please Enter Your Email"],
     }
 })
 

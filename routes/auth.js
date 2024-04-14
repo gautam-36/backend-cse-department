@@ -1,31 +1,26 @@
-
 const Faculty = require("../modals/Faculty");
 const User = require("../modals/User");
 const Authenticated = require("../utils/Authicated");
 const router=require("express").Router();
 
-
-
 router.post("/register",async(req,res,next)=>{
         try{
          const {email,password,userType}=req.body;
-         console.log(email,password)
+        //  console.log(email,password,userType)
          
          if(userType=="faculty"){
             const isEmail=await Faculty.findOne({email});
             if(!isEmail){
-                throw new Error("Email does not exist");
+                res.status(301).send("Email is not registered")
                 return
             }
          }
-
-
          const createUser=await User.create({
-            email,password
+            email,password,userType
          })
          
         res.json({
-            sucess:true,
+            success:true,
             message:"user created Sucessfully"
         })
         }
@@ -42,32 +37,35 @@ router.post("/login",async(req,res,next)=>{
        console.log(email,password);
 
        const isuser=await User.findOne({email});
-       console.log(isuser)
+       //    console.log(isuser)
 
        if(!isuser){
-        throw new Error("user Does not exist")
+           res.status(301).send("User doesn't exist")
+           return;
        }
-
-    const ispassword=await isuser.isPasswordCorrect(password)
-    console.log(ispassword)
-
-    if(!ispassword){
-        throw new Error("Enter userName or Password is not correct")
-    }
-
-    const accesToken=await isuser.generateAccessToken();
-    const refreshToken=await isuser.generateRefreshToken();
-    // consol
-    console.log(accesToken,refreshToken)
-
-    res.cookie("Acesstoken",accesToken,{
-        httpOnly:true
-    }).cookie("RefeshToken",refreshToken,{
-        httpOnly:true
-    }).json({
-        sucess:true,
-        message:"user logined sucessfully"
-    })
+           
+           const ispassword=await isuser.isPasswordCorrect(password)
+           // console.log(ispassword)
+           
+           if(!ispassword){
+               res.status(301).send("Password is incorrect")
+               return;
+            }
+            
+            const accesToken=await isuser.generateAccessToken();
+            const refreshToken=await isuser.generateRefreshToken();
+            // console
+            console.log(accesToken,refreshToken)
+            
+            res.cookie("Acesstoken",accesToken,{
+                httpOnly:true
+            }).cookie("RefeshToken",refreshToken,{
+                httpOnly:true
+            }).json({
+                sucess:true,
+                message:"user logged in sucessfully"
+            })
+        
 
     }
     catch(err){

@@ -38,7 +38,7 @@ mongoose.connect(process.env.MONGO_URL, {
 app.use('/api', uploadRoutes);
 app.use('/api', alumniRoutes);
 app.use('/api', facultyRoutes);
-app.use('/api', Authroute);
+app.use('/api/user', Authroute);  
 
 
 
