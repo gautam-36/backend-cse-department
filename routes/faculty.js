@@ -38,7 +38,7 @@ router.get('/faculty', async (req, res) => {
         const getFaculty = await Faculty.find();
         res.status(200).json(getFaculty)
     } catch (error) {
-        const errors = Object.values(err.errors).map(el => el.message);
+        const errors = Object.values(error.errors).map(el => el.message);
         res.status(400).json({ errors });
     }
 });
