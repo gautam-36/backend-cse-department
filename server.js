@@ -11,6 +11,7 @@ const uploadRoutes = require('./routes/uploadRoutes');
 const alumniRoutes = require('./routes/alumni');
 const facultyRoutes = require('./routes/faculty');
 const Authroute = require('./routes/auth');
+const Adminroute = require('./routes/admin');
 const cookieParser = require('cookie-parser');
 
 
@@ -39,6 +40,7 @@ app.use('/api', uploadRoutes);
 app.use('/api', alumniRoutes);
 app.use('/api', facultyRoutes);
 app.use('/api/user', Authroute);  
+app.use('/api/admin', Adminroute);  
 
 
 
