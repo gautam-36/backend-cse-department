@@ -5,6 +5,11 @@ const alumniSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Name is required'],
     },
+    email: {
+        type: String,
+        required: [true, 'Email is required'],
+        unique:true
+    },
     batchYear: {
         type: Number,
         required: [true, 'Batch year is required'],

@@ -18,6 +18,7 @@ router.post("/create-admin", async (req, res, next) => {
 
         res.json({
             success: true,
+
             message: "Admin created scuessfully"
         })
     }
@@ -37,6 +38,7 @@ router.get("/view-admin", async (req, res, next) => {
         console.error(err)
     }
 })
+
 
 
 
@@ -99,6 +101,49 @@ router.get("/logout",Authenticated,(req,res,next)=>{
         sucess:true
     })
 })
+=======
+// router.post("/login", async (req, res, next) => {
+//     try {
+//         const { email, password } = req.body;
+//         console.log(email, password);
+
+//         const isuser = await User.findOne({ email });
+//         //    console.log(isuser)
+
+//         if (!isuser) {
+//             res.status(301).send("User doesn't exist")
+//             return;
+//         }
+
+//         const ispassword = await isuser.isPasswordCorrect(password)
+//         // console.log(ispassword)
+
+//         if (!ispassword) {
+//             res.status(301).send("Password is incorrect")
+//             return;
+//         }
+
+//         const accesToken = await isuser.generateAccessToken();
+//         const refreshToken = await isuser.generateRefreshToken();
+//         // console
+//         console.log(accesToken, refreshToken)
+
+//         res.cookie("Acesstoken", accesToken, {
+//             httpOnly: true
+//         }).cookie("RefeshToken", refreshToken, {
+//             httpOnly: true
+//         }).json({
+//             sucess: true,
+//             message: "user logged in sucessfully"
+//         })
+
+
+//     }
+//     catch (err) {
+//         console.error(err)
+//     }
+// })
+
 
 
 
