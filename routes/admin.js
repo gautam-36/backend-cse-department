@@ -18,7 +18,8 @@ router.post("/create-admin", async (req, res, next) => {
 
         res.json({
             success: true,
-            message: "user created Sucessfully"
+
+            message: "Admin created scuessfully"
         })
     }
     catch (err) {
@@ -39,6 +40,67 @@ router.get("/view-admin", async (req, res, next) => {
 })
 
 
+
+
+router.post("/login", async (req, res, next) => {
+    try {
+        const { email, password } = req.body;
+        console.log(email, password);
+
+        const isAdmin = await Admin.findOne({ email });
+        //    console.log(isAdmin)
+
+        if (!isAdmin) {
+            res.status(301).send("User doesn't exist")
+            return;
+        }
+
+        const ispassword = await isAdmin.isPasswordCorrect(password)
+        // console.log(ispassword)
+
+        if (!ispassword) {
+            res.status(301).send("Password is incorrect")
+            return;
+        }
+
+        const accesToken = await isAdmin.generateAccessToken();
+        const refreshToken = await isAdmin.generateRefreshToken();
+        // console
+        console.log(accesToken, refreshToken)
+
+        res.cookie("Acesstoken", accesToken, {
+            httpOnly: true
+        }).cookie("RefeshToken", refreshToken, {
+            httpOnly: true
+        }).json({
+            sucess: true,
+            message: "Admin logged in sucessfully",
+            AcessTOken:accesToken
+        })
+
+
+    }
+    catch (err) {
+        console.error(err)
+    }
+})
+
+router.get("/logout",Authenticated,(req,res,next)=>{
+
+    const id=req.id;
+    console.log(id);
+    const options={
+        httpOnly:true
+    }
+    return res
+    .status(200)
+    .clearCookie("accessToken", options)
+    .clearCookie("refreshToken", options)
+    .json({
+        meassage:"Admin logout Sucessfully",
+        sucess:true
+    })
+})
 
 // router.post("/login", async (req, res, next) => {
 //     try {
@@ -81,6 +143,7 @@ router.get("/view-admin", async (req, res, next) => {
 //         console.error(err)
 //     }
 // })
+
 
 
 
