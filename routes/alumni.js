@@ -3,10 +3,11 @@ const router = require('express').Router();
 
 // Create a new alumni
 router.post('/alumni', async (req, res) => {
-    const { name, batchYear, classs, stream, company, position, roll, image } = req.body;
+    const { name,email, batchYear, classs, stream, company, position, roll, image } = req.body;
 
     const alumni = new Alumni({
         name,
+        email,
         batchYear,
         classs,
         stream,
@@ -48,7 +49,7 @@ router.get('/alumni', async (req, res) => {
         const getAlumni = await Alumni.find();
         res.status(200).json(getAlumni)
     } catch (error) {
-        const errors = Object.values(err.errors).map(el => el.message);
+        const errors = Object.values(error.errors).map(el => el.message);
         res.status(400).json({ errors });
     }
 });

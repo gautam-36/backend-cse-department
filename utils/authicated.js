@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> bf067c47ec9ef6fe63325e848ad6fc7477780abb
 const jwt=require("jsonwebtoken")
 
 const Authenticated=async(req,res,next)=>{

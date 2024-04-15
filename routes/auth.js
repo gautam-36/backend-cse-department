@@ -1,39 +1,40 @@
 
 const Alumni = require("../modals/Alumni");
 const Faculty = require("../modals/Faculty");
-const User = require("../modals/user");
+const User = require("../modals/User");
 const Authenticated = require("../utils/Authicated");
 const router=require("express").Router();
-
-
 
 router.post("/register",async(req,res,next)=>{
         try{
          const {email,password,userType}=req.body;
-         console.log(email,password)
+        //  console.log(email,password,userType)
+
          
          if(userType=="faculty"){
             const isEmail=await Faculty.findOne({email});
             if(!isEmail){
-                throw new Error("Email does not exist");
+                res.status(301).send("Email is not registered")
                 return
             }
          }
          if(userType=="alumni"){
             const isEmail=await Alumni.findOne({email});
             if(!isEmail){
-                throw new Error("Alumni does not exist");
+                 res.status(301).send("Alumni is not registered")
                 return
             }
          }
 
 
+        
+        
          const createUser=await User.create({
-            email,password
+            email,password,userType
          })
          
         res.json({
-            sucess:true,
+            success:true,
             message:"user created Sucessfully"
         })
         }
@@ -50,6 +51,7 @@ router.post("/login",async(req,res,next)=>{
        console.log(email,password);
 
        const isuser=await User.findOne({email});
+
        console.log(isuser)
 
        if(!isuser){
@@ -76,8 +78,7 @@ router.post("/login",async(req,res,next)=>{
         sucess:true,
         message:"user logined sucessfully"
     })
-
-    }
+}
     catch(err){
         console.error(err)
     }
