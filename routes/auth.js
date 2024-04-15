@@ -1,3 +1,4 @@
+const Alumni = require("../modals/Alumni");
 const Faculty = require("../modals/Faculty");
 const User = require("../modals/User");
 const Authenticated = require("../utils/Authicated");
@@ -14,6 +15,13 @@ router.post("/register",async(req,res,next)=>{
                 res.status(301).send("Email is not registered")
                 return
             }
+         }
+         if(userType=="alumni"){
+             const isEmail = await Alumni.findOne({ email });
+             if (!isEmail) {
+                 res.status(301).send("Email is not registered")
+                 return
+             }
          }
          const createUser=await User.create({
             email,password,userType
