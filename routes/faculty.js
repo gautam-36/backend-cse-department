@@ -40,7 +40,7 @@ router.get('/faculty', async (req, res) => {
     } catch (error) {
         const errors = Object.values(error.errors).map(el => el.message);
         res.status(400).json({ errors });
-       
+
     }
 });
 
