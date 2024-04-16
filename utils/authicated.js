@@ -1,8 +1,11 @@
+
+
 const jwt = require("jsonwebtoken")
 
 const Authenticated = async (req, res, next) => {
    const Token = req.cookies.Acesstoken
    console.log(Token);
+
 
    if (!Token) {
       throw new Error("Token Does not exist");

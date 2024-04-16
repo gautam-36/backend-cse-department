@@ -14,7 +14,10 @@ const AdminSchema = new mongoose.Schema({
     },
     userType: {
         type: String,
-        default: "Admin"
+        default:"Admin"
+    },
+    restPAsswordToken:{
+        type:String
     }
 })
 // added some routes
