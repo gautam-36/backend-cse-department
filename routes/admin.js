@@ -4,21 +4,21 @@ const router = require("express").Router();
 
 router.post("/create-admin", async (req, res, next) => {
     try {
-        const { username, email, password,userType } = req.body;
+        console.log(req.body)
+        const { email, password, userType } = req.body;
         //  console.log(email,password,userType)
 
         // if (userType == "faculty") {
-           
-           
+
+
         // }
         const createAdmin = await Admin.create({
-           username, email, password, userType
+            email, password, userType
         })
         console.log(createAdmin)
 
         res.json({
             success: true,
-
             message: "Admin created scuessfully"
         })
     }
@@ -28,7 +28,7 @@ router.post("/create-admin", async (req, res, next) => {
 })
 router.get("/view-admin", async (req, res, next) => {
     try {
-       
+
         const getAdmin = await Admin.find()
         console.log(getAdmin)
 
@@ -75,7 +75,7 @@ router.post("/login", async (req, res, next) => {
         }).json({
             sucess: true,
             message: "Admin logged in sucessfully",
-            AcessTOken:accesToken
+            AcessTOken: accesToken
         })
 
 
@@ -85,21 +85,21 @@ router.post("/login", async (req, res, next) => {
     }
 })
 
-router.get("/logout",Authenticated,(req,res,next)=>{
+router.get("/logout", Authenticated, (req, res, next) => {
 
-    const id=req.id;
+    const id = req.id;
     console.log(id);
-    const options={
-        httpOnly:true
+    const options = {
+        httpOnly: true
     }
     return res
-    .status(200)
-    .clearCookie("accessToken", options)
-    .clearCookie("refreshToken", options)
-    .json({
-        meassage:"Admin logout Sucessfully",
-        sucess:true
-    })
+        .status(200)
+        .clearCookie("Acesstoken", options)
+        .clearCookie("RefeshToken", options)
+        .json({
+            meassage: "Admin logout Sucessfully",
+            sucess: true
+        })
 })
 
 // router.post("/login", async (req, res, next) => {

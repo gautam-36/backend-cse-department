@@ -1,21 +1,17 @@
-<<<<<<< HEAD
-=======
+const jwt = require("jsonwebtoken")
 
->>>>>>> bf067c47ec9ef6fe63325e848ad6fc7477780abb
-const jwt=require("jsonwebtoken")
+const Authenticated = async (req, res, next) => {
+   const Token = req.cookies.Acesstoken
+   console.log(Token);
 
-const Authenticated=async(req,res,next)=>{
-     const Token=req.cookies.Acesstoken
-     console.log(Token);
+   if (!Token) {
+      throw new Error("Token Does not exist");
+   }
 
-     if(!Token){
-        throw new Error("Token Does not exist");
-     }
-
-      const data=await jwt.verify(Token,process.env.ACCESS_TOKEN_SECRET)
-      console.log(data)
-      req.id=data._id;
-      next()
+   const data = await jwt.verify(Token, process.env.ACCESS_TOKEN_SECRET)
+   console.log(data)
+   req.id = data._id;
+   next()
 }
 
-module.exports=Authenticated
+module.exports = Authenticated
