@@ -6,6 +6,7 @@ const bcrypt = require("bcrypt");
 
 router.post("/create-admin", async (req, res, next) => {
     try {
+
         const {  email, password,userType } = req.body;
             
         if(!email){
@@ -18,7 +19,7 @@ router.post("/create-admin", async (req, res, next) => {
                 message:"Enter the password"
             })
         }
-        
+       
 
         const createAdmin = await Admin.create({
             email, password, userType
@@ -36,7 +37,7 @@ router.post("/create-admin", async (req, res, next) => {
 })
 router.get("/view-admin", async (req, res, next) => {
     try {
-       
+
         const getAdmin = await Admin.find()
         console.log(getAdmin)
 
@@ -83,7 +84,7 @@ router.post("/login", async (req, res, next) => {
         }).json({
             sucess: true,
             message: "Admin logged in sucessfully",
-            AcessTOken:accesToken
+            AcessTOken: accesToken
         })
 
 
@@ -93,12 +94,12 @@ router.post("/login", async (req, res, next) => {
     }
 })
 
-router.get("/logout",Authenticated,(req,res,next)=>{
+router.get("/logout", Authenticated, (req, res, next) => {
 
-    const id=req.id;
+    const id = req.id;
     console.log(id);
-    const options={
-        httpOnly:true
+    const options = {
+        httpOnly: true
     }
     return res
     .status(200)
@@ -108,6 +109,7 @@ router.get("/logout",Authenticated,(req,res,next)=>{
         meassage:"Admin logout Sucessfully",
         sucess:true
     })
+
 })
 
 router.post("/updatePassword",Authenticated,async(req,res,next)=>{
