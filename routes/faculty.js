@@ -3,8 +3,8 @@ const router = require('express').Router();
 
 // create a new faculty
 router.post('/faculty', async (req, res) => {
-    const { name, email, phone, joinYear, confrence, teaching, research, national, international, designation, qualification, expertise, image, bioData } = req.body;
-    const faculty = new Faculty({ name, email, phone, joinYear, confrence, teaching, research, national, international, designation, qualification, expertise, image, bioData });
+    const { name, email, phone, joinYear, confrence, teaching, research, national, international, designation, facultyType, qualification, expertise, image } = req.body;
+    const faculty = new Faculty({ name, email, phone, joinYear, confrence, teaching, research, national, international, designation, facultyType, qualification, expertise, image });
     try {
         const newFaculty = await faculty.save();
         res.status(201).json(newFaculty)

@@ -43,6 +43,11 @@ const facultySchema = new mongoose.Schema({
         type: String,
         required: [true, 'Designation is required'],
     },
+    facultyType: {
+        type: String,
+        required: [true, 'facultyType is required'],
+        default:"Permanent"
+    },
 
     qualification: {
         type: String,
@@ -56,9 +61,9 @@ const facultySchema = new mongoose.Schema({
     image: {
         type: String,
     },
-    bioData: {
-        type: String,
-    },
+    // bioData: {
+    //     type: String,
+    // },
 
 });
 module.exports = mongoose.model('Faculty', facultySchema);
