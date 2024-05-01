@@ -44,7 +44,9 @@ app.use('/api/admin', Adminroute);
 
 
 
-
+app.get("/",()=>{
+    res.send("server is running")
+})
 // Start server
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
