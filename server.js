@@ -44,7 +44,7 @@ app.use('/api/admin', Adminroute);
 
 
 
-app.get("/",()=>{
+app.get("/",(req,res)=>{
     res.send("server is running")
 })
 // Start server
