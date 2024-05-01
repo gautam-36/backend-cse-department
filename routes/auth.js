@@ -1,7 +1,7 @@
 const Alumni = require("../modals/Alumni");
 const Faculty = require("../modals/Faculty");
 const User = require("../modals/User");
-const Authenticated = require("../utils/Authicated");
+// const Authenticated = require("../utils/Authicated");
 const router = require("express").Router();
 
 router.post("/register", async (req, res, next) => {
