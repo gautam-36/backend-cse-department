@@ -19,7 +19,7 @@ const cookieParser = require('cookie-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({
-    origin: ['http://localhost:3000', 'http://localhost:3001'], // Specify the origin(s) you want to allow
+    origin: ['https://cse-gjust.netlify.app/', 'http://localhost:3001', 'http://localhost:3000','https://cse-admin-gjust.netlify.app/'], // Specify the origin(s) you want to allow
 
     methods: ['GET', 'POST'], // Specify which methods are allowed
     //   allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
