@@ -39,12 +39,12 @@ mongoose.connect(process.env.MONGO_URL, {
 app.use('/api', uploadRoutes);
 app.use('/api', alumniRoutes);
 app.use('/api', facultyRoutes);
-app.use('/api/user', Authroute);  
-app.use('/api/admin', Adminroute);  
+app.use('/api/user', Authroute);
+app.use('/api/admin', Adminroute);
 
 
 
-app.get("/",(req,res)=>{
+app.get("/", (req, res) => {
     res.send("server is running")
 })
 // Start server
