@@ -1,5 +1,6 @@
 const Admin = require("../modals/Admin");
-const Authenticated = require("../utils/Authicated");
+// const Authenticated = require("../utils/Authicated");
+const Authenticated  = require("../utils/authicated")
 const router = require("express").Router();
 const crypto = require("crypto");
 const bcrypt = require("bcrypt");
