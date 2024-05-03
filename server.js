@@ -18,13 +18,13 @@ const cookieParser = require('cookie-parser');
 // Middlewares
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(cors({
-//     origin: ['https://cse-gjust.netlify.app/', 'http://localhost:3001', 'http://localhost:3000','https://cse-admin-gjust.netlify.app/'], // Specify the origin(s) you want to allow
+app.use(cors({
+    origin: ['https://cse-gjust.netlify.app/', 'http://localhost:3001', 'http://localhost:3000','https://cse-admin-gjust.netlify.app/'], // Specify the origin(s) you want to allow
 
-//     methods: ['GET', 'POST'], // Specify which methods are allowed
-//     //   allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
-//     credentials: true
-// }));
+    methods: ['GET', 'POST'], // Specify which methods are allowed
+    //   allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
+    credentials: true
+}));
 app.use(cookieParser());
 
 
