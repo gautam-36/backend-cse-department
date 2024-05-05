@@ -16,7 +16,7 @@ const AnnouncementRoute = require('./routes/announcement');
 const ImportantDatesRoutes = require('./routes/importantDates');
 const NewsRoutes = require('./routes/news');
 const EventsRoutes = require('./routes/events');
-const PublicationRoutes = require('./routes/Publication');
+const PublicationRoutes = require('./routes/publication');
 const cookieParser = require('cookie-parser');
 
 
