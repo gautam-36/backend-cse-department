@@ -12,6 +12,11 @@ const alumniRoutes = require('./routes/alumni');
 const facultyRoutes = require('./routes/faculty');
 const Authroute = require('./routes/auth');
 const Adminroute = require('./routes/admin');
+const AnnouncementRoute = require('./routes/announcement');
+const ImportantDatesRoutes = require('./routes/importantDates');
+const NewsRoutes = require('./routes/news');
+const EventsRoutes = require('./routes/events');
+const PublicationRoutes = require('./routes/Publication');
 const cookieParser = require('cookie-parser');
 
 
@@ -19,7 +24,7 @@ const cookieParser = require('cookie-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({
-    origin: ['https://cse-gjust.netlify.app/', 'http://localhost:3001', 'http://localhost:3000','https://cse-admin-gjust.netlify.app/'], // Specify the origin(s) you want to allow
+    origin: ['https://cse-gjust.netlify.app', 'http://localhost:3001', 'http://localhost:3000', 'https://cse-admin-gjust.netlify.app'], // Specify the origin(s) you want to allow
 
     methods: ['GET', 'POST'], // Specify which methods are allowed
     //   allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
@@ -40,6 +45,11 @@ app.use('/api', uploadRoutes);
 app.use('/api', alumniRoutes);
 app.use('/api', facultyRoutes);
 app.use('/api/user', Authroute);
+app.use('/api', AnnouncementRoute);
+app.use('/api', ImportantDatesRoutes);
+app.use('/api', NewsRoutes);
+app.use('/api', EventsRoutes);
+app.use('/api', PublicationRoutes);
 app.use('/api/admin', Adminroute);
 
 
