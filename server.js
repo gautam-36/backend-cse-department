@@ -17,6 +17,7 @@ const ImportantDatesRoutes = require('./routes/importantDates');
 const NewsRoutes = require('./routes/news');
 const EventsRoutes = require('./routes/events');
 const PublicationRoutes = require('./routes/publication');
+const StudentRoutes = require('./routes/student');
 const cookieParser = require('cookie-parser');
 
 
@@ -50,6 +51,7 @@ app.use('/api', ImportantDatesRoutes);
 app.use('/api', NewsRoutes);
 app.use('/api', EventsRoutes);
 app.use('/api', PublicationRoutes);
+app.use('/api/student', StudentRoutes);
 app.use('/api/admin', Adminroute);
 
 
