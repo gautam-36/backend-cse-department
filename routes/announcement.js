@@ -5,12 +5,12 @@ const router = require("express").Router();
 router.post("/announcement", async (req, res) => {
     try {
 
-        const { title, date, url } = req.body;
+        const { description, date, url } = req.body;
 
 
 
         const createAnnouncement = await Announcement.create({
-            title, date, url
+            description, date, url
         })
         console.log(createAnnouncement)
 
@@ -27,7 +27,7 @@ router.get("/announcement", async (req, res) => {
     try {
 
         const getAnnouncement = await Announcement.find()
-        console.log(getAnnouncement)
+        // console.log(getAnnouncement)
 
         res.status(200).send(getAnnouncement)
     }

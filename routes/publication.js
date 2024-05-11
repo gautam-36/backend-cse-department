@@ -5,12 +5,12 @@ const router = require("express").Router();
 router.post("/publication", async (req, res) => {
     try {
 
-        const { title,facultyName, date, url} = req.body;
+        const { description,facultyName, date, url} = req.body;
 
 
 
         const createPublications = await Publication.create({
-            title,facultyName, date, url
+            description,facultyName, date, url
         })
         console.log(createPublications)
 

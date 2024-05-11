@@ -5,12 +5,12 @@ const router = require("express").Router();
 router.post("/news", async (req, res) => {
     try {
 
-        const { title, date, url } = req.body;
+        const { description, date, url } = req.body;
 
 
 
         const createNews = await News.create({
-            title, date, url
+            description, date, url
         })
         console.log(createNews)
 

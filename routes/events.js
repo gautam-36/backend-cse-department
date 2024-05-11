@@ -5,12 +5,12 @@ const router = require("express").Router();
 router.post("/events", async (req, res) => {
     try {
 
-        const { title, date, url, image} = req.body;
+        const { description, date, url, image} = req.body;
 
 
 
         const createEvents = await Events.create({
-            title, date, url, image
+            description, date, url, image
         })
         console.log(createEvents)
 

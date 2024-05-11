@@ -1,16 +1,16 @@
 const mongoose = require('mongoose');
 
 const importantDatesSchema = new mongoose.Schema({
-    title: {
+    description: {
         type: String,
-        required: [true, "please Enter title"],
-       
+        required: [true, "please Enter description"],
+
     },
     date: {
         type: String,
-        required: [true, "please enter the password"],
+        // required: [true, "please enter the date"],
     },
-    description: {
+    url: {
         type: String,
         default: ""
     }

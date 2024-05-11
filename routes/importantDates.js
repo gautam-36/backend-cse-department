@@ -2,15 +2,15 @@ const ImportantDates = require("../modals/ImportantDates");
 const router = require("express").Router();
 
 
-router.post("/important-dates", async (req, res) => {
+router.post("/dates", async (req, res) => {
     try {
 
-        const { title, date, description } = req.body;
+        const { description, date, url } = req.body;
 
 
 
         const createImportantDates = await ImportantDates.create({
-            title, date, description
+            description, date, url
         })
         console.log(createImportantDates)
 
@@ -23,7 +23,7 @@ router.post("/important-dates", async (req, res) => {
         console.error(err)
     }
 })
-router.get("/important-dates", async (req, res) => {
+router.get("/dates", async (req, res) => {
     try {
 
         const getImportantDates = await ImportantDates.find()
@@ -37,7 +37,7 @@ router.get("/important-dates", async (req, res) => {
 })
 
 // Delete an announcement
-router.delete('important-dates/:id', async (req, res) => {
+router.delete('dates/:id', async (req, res) => {
     try {
         await ImportantDates.findByIdAndDelete(req.params.id);
         res.json({ message: 'important dates deleted successfully' });
